@@ -73,25 +73,39 @@ const db =
 const servicios = {
 
   jugadores:
-    crearJugadorService(db),
+    crearJugadorService(
+      db
+    ),
 
   partidos:
-    crearPartidoService(db),
+    crearPartidoService(
+      db
+    ),
 
   entrenamientos:
-    crearEntrenamientoService(db),
+    crearEntrenamientoService(
+      db
+    ),
 
   asistencia:
-    crearAsistenciaService(db),
+    crearAsistenciaService(
+      db
+    ),
 
   lesiones:
-    crearLesionService(db),
+    crearLesionService(
+      db
+    ),
 
   dashboard:
-    crearDashboardService(db),
+    crearDashboardService(
+      db
+    ),
 
   estadisticas:
-    crearEstadisticaService(db)
+    crearEstadisticaService(
+      db
+    )
 
 };
 
@@ -189,5 +203,6 @@ app.listen(
     console.log(
       "================================"
     );
+
   }
 );

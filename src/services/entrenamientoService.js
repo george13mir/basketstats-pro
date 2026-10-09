@@ -15,26 +15,26 @@ function crearEntrenamientoService(db) {
     validar(datos);
 
 
-    const resultado =
-      await db.run(
-        `
-        INSERT INTO entrenamientos (
-          fecha,
-          tipo,
-          duracion,
-          lugar,
-          observaciones
-        )
-        VALUES (?, ?, ?, ?, ?)
-        `,
-        [
-          datos.fecha,
-          datos.tipo,
-          datos.duracion || 0,
-          datos.lugar || "",
-          datos.observaciones || ""
-        ]
-      );
+    const resultado = await db.run(
+      `
+      INSERT INTO entrenamientos (
+        fecha,
+        tipo,
+        duracion,
+        lugar,
+        observaciones
+      )
+
+      VALUES (?, ?, ?, ?, ?)
+      `,
+      [
+        datos.fecha,
+        datos.tipo,
+        datos.duracion || 0,
+        datos.lugar || "",
+        datos.observaciones || ""
+      ]
+    );
 
 
     return {
@@ -45,10 +45,7 @@ function crearEntrenamientoService(db) {
   }
 
 
-  async function actualizar(
-    id,
-    datos
-  ) {
+  async function actualizar(id, datos) {
 
     validar(datos);
 
@@ -56,12 +53,14 @@ function crearEntrenamientoService(db) {
     await db.run(
       `
       UPDATE entrenamientos
+
       SET
         fecha = ?,
         tipo = ?,
         duracion = ?,
         lugar = ?,
         observaciones = ?
+
       WHERE id = ?
       `,
       [
@@ -107,10 +106,9 @@ function crearEntrenamientoService(db) {
       !datos.tipo
     ) {
 
-      const error =
-        new Error(
-          "La fecha y el tipo son obligatorios."
-        );
+      const error = new Error(
+        "La fecha y el tipo de entrenamiento son obligatorios."
+      );
 
       error.status = 400;
 
@@ -122,10 +120,9 @@ function crearEntrenamientoService(db) {
       Number(datos.duracion) < 0
     ) {
 
-      const error =
-        new Error(
-          "La duración no puede ser negativa."
-        );
+      const error = new Error(
+        "La duración no puede ser negativa."
+      );
 
       error.status = 400;
 
@@ -143,5 +140,4 @@ function crearEntrenamientoService(db) {
 }
 
 
-module.exports =
-  crearEntrenamientoService;
+module.exports = crearEntrenamientoService;

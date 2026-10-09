@@ -4,7 +4,9 @@ function crearLesionService(db) {
 
     return await db.all(`
       SELECT
+
         l.*,
+
         j.nombre,
         j.apellido,
         j.numero,
@@ -13,6 +15,7 @@ function crearLesionService(db) {
       FROM lesiones l
 
       INNER JOIN jugadores j
+
       ON
         l.jugador_id = j.id
 
@@ -28,29 +31,29 @@ function crearLesionService(db) {
     validar(datos);
 
 
-    const resultado =
-      await db.run(
-        `
-        INSERT INTO lesiones (
-          jugador_id,
-          tipo_lesion,
-          fecha_inicio,
-          fecha_estimada,
-          estado,
-          observaciones
-        )
-        VALUES (?, ?, ?, ?, ?, ?)
-        `,
-        [
-          datos.jugador_id,
-          datos.tipo_lesion,
-          datos.fecha_inicio,
-          datos.fecha_estimada || "",
-          datos.estado ||
-            "En recuperación",
-          datos.observaciones || ""
-        ]
-      );
+    const resultado = await db.run(
+      `
+      INSERT INTO lesiones (
+        jugador_id,
+        tipo_lesion,
+        fecha_inicio,
+        fecha_estimada,
+        estado,
+        observaciones
+      )
+
+      VALUES (?, ?, ?, ?, ?, ?)
+      `,
+      [
+        datos.jugador_id,
+        datos.tipo_lesion,
+        datos.fecha_inicio,
+        datos.fecha_estimada || "",
+        datos.estado ||
+          "En recuperación",
+        datos.observaciones || ""
+      ]
+    );
 
 
     await sincronizarEstadoJugador(
@@ -79,6 +82,7 @@ function crearLesionService(db) {
     await db.run(
       `
       UPDATE lesiones
+
       SET
         jugador_id = ?,
         tipo_lesion = ?,
@@ -86,6 +90,7 @@ function crearLesionService(db) {
         fecha_estimada = ?,
         estado = ?,
         observaciones = ?
+
       WHERE id = ?
       `,
       [
@@ -116,15 +121,16 @@ function crearLesionService(db) {
 
   async function eliminar(id) {
 
-    const lesion =
-      await db.get(
-        `
-        SELECT jugador_id
-        FROM lesiones
-        WHERE id = ?
-        `,
-        [id]
-      );
+    const lesion = await db.get(
+      `
+      SELECT jugador_id
+
+      FROM lesiones
+
+      WHERE id = ?
+      `,
+      [id]
+    );
 
 
     await db.run(
@@ -143,10 +149,14 @@ function crearLesionService(db) {
           `
           SELECT
             COUNT(*) AS total
+
           FROM lesiones
+
           WHERE
             jugador_id = ?
-            AND
+
+          AND
+
             estado != 'Recuperado'
           `,
           [lesion.jugador_id]
@@ -160,7 +170,9 @@ function crearLesionService(db) {
         await db.run(
           `
           UPDATE jugadores
+
           SET estado = 'Activo'
+
           WHERE id = ?
           `,
           [lesion.jugador_id]
@@ -182,16 +194,19 @@ function crearLesionService(db) {
   ) {
 
     const estadoJugador =
-      estadoLesion ===
-      "Recuperado"
+      estadoLesion === "Recuperado"
+
         ? "Activo"
+
         : "Lesionado";
 
 
     await db.run(
       `
       UPDATE jugadores
+
       SET estado = ?
+
       WHERE id = ?
       `,
       [
@@ -210,10 +225,9 @@ function crearLesionService(db) {
       !datos.fecha_inicio
     ) {
 
-      const error =
-        new Error(
-          "Jugador, lesión y fecha son obligatorios."
-        );
+      const error = new Error(
+        "Jugador, lesión y fecha son obligatorios."
+      );
 
       error.status = 400;
 

@@ -15,28 +15,28 @@ function crearPartidoService(db) {
     validar(datos);
 
 
-    const resultado =
-      await db.run(
-        `
-        INSERT INTO partidos (
-          rival,
-          fecha,
-          puntos_equipo,
-          puntos_rival,
-          lugar,
-          observaciones
-        )
-        VALUES (?, ?, ?, ?, ?, ?)
-        `,
-        [
-          datos.rival,
-          datos.fecha,
-          datos.puntos_equipo || 0,
-          datos.puntos_rival || 0,
-          datos.lugar || "",
-          datos.observaciones || ""
-        ]
-      );
+    const resultado = await db.run(
+      `
+      INSERT INTO partidos (
+        rival,
+        fecha,
+        puntos_equipo,
+        puntos_rival,
+        lugar,
+        observaciones
+      )
+
+      VALUES (?, ?, ?, ?, ?, ?)
+      `,
+      [
+        datos.rival,
+        datos.fecha,
+        datos.puntos_equipo || 0,
+        datos.puntos_rival || 0,
+        datos.lugar || "",
+        datos.observaciones || ""
+      ]
+    );
 
 
     return {
@@ -47,10 +47,7 @@ function crearPartidoService(db) {
   }
 
 
-  async function actualizar(
-    id,
-    datos
-  ) {
+  async function actualizar(id, datos) {
 
     validar(datos);
 
@@ -58,6 +55,7 @@ function crearPartidoService(db) {
     await db.run(
       `
       UPDATE partidos
+
       SET
         rival = ?,
         fecha = ?,
@@ -65,6 +63,7 @@ function crearPartidoService(db) {
         puntos_rival = ?,
         lugar = ?,
         observaciones = ?
+
       WHERE id = ?
       `,
       [
@@ -111,10 +110,9 @@ function crearPartidoService(db) {
       !datos.fecha
     ) {
 
-      const error =
-        new Error(
-          "El rival y la fecha son obligatorios."
-        );
+      const error = new Error(
+        "El rival y la fecha son obligatorios."
+      );
 
       error.status = 400;
 
@@ -127,10 +125,9 @@ function crearPartidoService(db) {
       Number(datos.puntos_rival) < 0
     ) {
 
-      const error =
-        new Error(
-          "Los puntos no pueden ser negativos."
-        );
+      const error = new Error(
+        "Los puntos no pueden ser negativos."
+      );
 
       error.status = 400;
 
@@ -148,5 +145,4 @@ function crearPartidoService(db) {
 }
 
 
-module.exports =
-  crearPartidoService;
+module.exports = crearPartidoService;

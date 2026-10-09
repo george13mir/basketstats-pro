@@ -7,7 +7,9 @@ function crearAsistenciaService(db) {
     return await db.all(
       `
       SELECT
+
         j.id AS jugador_id,
+
         j.nombre,
         j.apellido,
         j.numero,
@@ -21,9 +23,12 @@ function crearAsistenciaService(db) {
       FROM jugadores j
 
       LEFT JOIN asistencia a
+
       ON
         a.jugador_id = j.id
+
         AND
+
         a.entrenamiento_id = ?
 
       ORDER BY
@@ -44,10 +49,9 @@ function crearAsistenciaService(db) {
       !Array.isArray(asistencias)
     ) {
 
-      const error =
-        new Error(
-          "Formato de asistencia inválido."
-        );
+      const error = new Error(
+        "Formato de asistencia inválido."
+      );
 
       error.status = 400;
 
@@ -67,6 +71,7 @@ function crearAsistenciaService(db) {
           jugador_id,
           estado
         )
+
         VALUES (?, ?, ?)
 
         ON CONFLICT(
@@ -75,7 +80,9 @@ function crearAsistenciaService(db) {
         )
 
         DO UPDATE SET
-          estado = excluded.estado
+
+          estado =
+            excluded.estado
         `,
         [
           entrenamientoId,
@@ -95,60 +102,73 @@ function crearAsistenciaService(db) {
 
   async function obtenerResumen() {
 
-    const rows =
-      await db.all(`
-        SELECT
-          j.id,
-          j.nombre,
-          j.apellido,
-          j.numero,
-          j.posicion,
+    const rows = await db.all(`
+      SELECT
 
-          COUNT(a.id)
-          AS registros,
+        j.id,
+        j.nombre,
+        j.apellido,
+        j.numero,
+        j.posicion,
 
-          SUM(
-            CASE
-              WHEN
-                a.estado = 'Presente'
-              THEN 1
-              ELSE 0
-            END
-          )
-          AS presentes,
+        COUNT(a.id)
+        AS registros,
 
-          SUM(
-            CASE
-              WHEN
-                a.estado = 'Ausente'
-              THEN 1
-              ELSE 0
-            END
-          )
-          AS ausentes,
+        SUM(
+          CASE
 
-          SUM(
-            CASE
-              WHEN
-                a.estado = 'Justificado'
-              THEN 1
-              ELSE 0
-            END
-          )
-          AS justificados
+            WHEN
+              a.estado = 'Presente'
 
-        FROM jugadores j
+            THEN 1
 
-        LEFT JOIN asistencia a
-        ON
-          a.jugador_id = j.id
+            ELSE 0
 
-        GROUP BY j.id
+          END
+        )
+        AS presentes,
 
-        ORDER BY
-          j.nombre,
-          j.apellido
-      `);
+        SUM(
+          CASE
+
+            WHEN
+              a.estado = 'Ausente'
+
+            THEN 1
+
+            ELSE 0
+
+          END
+        )
+        AS ausentes,
+
+        SUM(
+          CASE
+
+            WHEN
+              a.estado = 'Justificado'
+
+            THEN 1
+
+            ELSE 0
+
+          END
+        )
+        AS justificados
+
+      FROM jugadores j
+
+      LEFT JOIN asistencia a
+
+      ON
+        a.jugador_id = j.id
+
+      GROUP BY j.id
+
+      ORDER BY
+        j.nombre,
+        j.apellido
+    `);
 
 
     return rows.map(row => {
@@ -166,11 +186,13 @@ function crearAsistenciaService(db) {
 
         porcentaje:
           registros > 0
+
             ? (
                 presentes /
                 registros *
                 100
               ).toFixed(1)
+
             : "0.0"
       };
     });

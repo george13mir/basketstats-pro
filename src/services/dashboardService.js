@@ -28,8 +28,11 @@ function crearDashboardService(db) {
     const lesionesData =
       await db.get(`
         SELECT
+
           COUNT(*) AS total
+
         FROM lesiones
+
         WHERE
           estado != 'Recuperado'
       `);
@@ -103,28 +106,36 @@ function crearDashboardService(db) {
       totalJugadores:
         jugadores.length,
 
+
       jugadoresActivos:
         jugadores.filter(
-          j =>
-            j.estado === "Activo"
+          jugador =>
+            jugador.estado ===
+            "Activo"
         ).length,
+
 
       jugadoresLesionados:
         jugadores.filter(
-          j =>
-            j.estado === "Lesionado"
+          jugador =>
+            jugador.estado ===
+            "Lesionado"
         ).length,
+
 
       totalPartidos:
         partidos.length,
 
+
       totalEntrenamientos:
         entrenamientos.length,
+
 
       lesionesActivas:
         Number(
           lesionesData.total
         ) || 0,
+
 
       victorias,
 
@@ -134,17 +145,21 @@ function crearDashboardService(db) {
 
       porcentajeVictorias,
 
+
       mejorAnotador:
         rankingPuntos[0] ||
         null,
+
 
       mejorReboteador:
         rankingRebotes[0] ||
         null,
 
+
       mejorAsistente:
         rankingAsistencias[0] ||
         null,
+
 
       top3:
         rankingPuntos.slice(
@@ -152,11 +167,13 @@ function crearDashboardService(db) {
           3
         ),
 
+
       ultimosPartidos:
         partidos.slice(
           0,
           5
         ),
+
 
       ultimosEntrenamientos:
         entrenamientos.slice(
@@ -172,29 +189,40 @@ function crearDashboardService(db) {
   ) {
 
     const partidos =
-      Number(jugador.partidos);
+      Number(
+        jugador.partidos
+      );
 
 
     return {
 
       ...jugador,
 
+
       promedioPuntos:
         partidos > 0
+
           ? jugador.puntos /
             partidos
+
           : 0,
+
 
       promedioRebotes:
         partidos > 0
+
           ? jugador.rebotes /
             partidos
+
           : 0,
+
 
       promedioAsistencias:
         partidos > 0
+
           ? jugador.asistencias /
             partidos
+
           : 0
     };
   }

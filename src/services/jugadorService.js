@@ -12,23 +12,21 @@ function crearJugadorService(db) {
 
   async function obtenerPorId(id) {
 
-    const jugador =
-      await db.get(
-        `
-        SELECT *
-        FROM jugadores
-        WHERE id = ?
-        `,
-        [id]
-      );
+    const jugador = await db.get(
+      `
+      SELECT *
+      FROM jugadores
+      WHERE id = ?
+      `,
+      [id]
+    );
 
 
     if (!jugador) {
 
-      const error =
-        new Error(
-          "Jugador no encontrado."
-        );
+      const error = new Error(
+        "Jugador no encontrado."
+      );
 
       error.status = 404;
 
@@ -45,43 +43,43 @@ function crearJugadorService(db) {
     validarJugador(datos);
 
 
-    const resultado =
-      await db.run(
-        `
-        INSERT INTO jugadores (
-          nombre,
-          apellido,
-          numero,
-          posicion,
-          edad,
-          altura,
-          estado,
-          partidos,
-          puntos,
-          rebotes,
-          asistencias,
-          robos
-        )
-        VALUES (
-          ?, ?, ?, ?, ?, ?,
-          ?, ?, ?, ?, ?, ?
-        )
-        `,
-        [
-          datos.nombre,
-          datos.apellido,
-          datos.numero,
-          datos.posicion,
-          datos.edad || 0,
-          datos.altura || 0,
-          datos.estado || "Activo",
-          datos.partidos || 0,
-          datos.puntos || 0,
-          datos.rebotes || 0,
-          datos.asistencias || 0,
-          datos.robos || 0
-        ]
-      );
+    const resultado = await db.run(
+      `
+      INSERT INTO jugadores (
+        nombre,
+        apellido,
+        numero,
+        posicion,
+        edad,
+        altura,
+        estado,
+        partidos,
+        puntos,
+        rebotes,
+        asistencias,
+        robos
+      )
+
+      VALUES (
+        ?, ?, ?, ?, ?, ?,
+        ?, ?, ?, ?, ?, ?
+      )
+      `,
+      [
+        datos.nombre,
+        datos.apellido,
+        datos.numero,
+        datos.posicion,
+        datos.edad || 0,
+        datos.altura || 0,
+        datos.estado || "Activo",
+        datos.partidos || 0,
+        datos.puntos || 0,
+        datos.rebotes || 0,
+        datos.asistencias || 0,
+        datos.robos || 0
+      ]
+    );
 
 
     return {
@@ -92,13 +90,9 @@ function crearJugadorService(db) {
   }
 
 
-  async function actualizar(
-    id,
-    datos
-  ) {
+  async function actualizar(id, datos) {
 
     validarJugador(datos);
-
 
     await obtenerPorId(id);
 
@@ -106,6 +100,7 @@ function crearJugadorService(db) {
     await db.run(
       `
       UPDATE jugadores
+
       SET
         nombre = ?,
         apellido = ?,
@@ -119,6 +114,7 @@ function crearJugadorService(db) {
         rebotes = ?,
         asistencias = ?,
         robos = ?
+
       WHERE id = ?
       `,
       [
@@ -176,10 +172,9 @@ function crearJugadorService(db) {
       !datos.posicion
     ) {
 
-      const error =
-        new Error(
-          "Complete nombre, apellido, número y posición."
-        );
+      const error = new Error(
+        "Complete nombre, apellido, número y posición."
+      );
 
       error.status = 400;
 
@@ -187,14 +182,11 @@ function crearJugadorService(db) {
     }
 
 
-    if (
-      Number(datos.numero) <= 0
-    ) {
+    if (Number(datos.numero) <= 0) {
 
-      const error =
-        new Error(
-          "El dorsal debe ser mayor a cero."
-        );
+      const error = new Error(
+        "El número de camiseta debe ser mayor a cero."
+      );
 
       error.status = 400;
 
@@ -213,5 +205,4 @@ function crearJugadorService(db) {
 }
 
 
-module.exports =
-  crearJugadorService;
+module.exports = crearJugadorService;

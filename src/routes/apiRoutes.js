@@ -27,6 +27,7 @@ function crearApiRoutes(
 
   router.get(
     "/jugadores",
+
     asyncHandler(
       async (req, res) => {
 
@@ -41,6 +42,7 @@ function crearApiRoutes(
 
   router.get(
     "/jugadores/:id",
+
     asyncHandler(
       async (req, res) => {
 
@@ -57,12 +59,15 @@ function crearApiRoutes(
 
   router.post(
     "/jugadores",
+
     asyncHandler(
       async (req, res) => {
 
         res.json(
           await jugadores
-            .crear(req.body)
+            .crear(
+              req.body
+            )
         );
       }
     )
@@ -71,6 +76,7 @@ function crearApiRoutes(
 
   router.put(
     "/jugadores/:id",
+
     asyncHandler(
       async (req, res) => {
 
@@ -88,6 +94,7 @@ function crearApiRoutes(
 
   router.delete(
     "/jugadores/:id",
+
     asyncHandler(
       async (req, res) => {
 
@@ -108,6 +115,7 @@ function crearApiRoutes(
 
   router.get(
     "/partidos",
+
     asyncHandler(
       async (req, res) => {
 
@@ -122,12 +130,15 @@ function crearApiRoutes(
 
   router.post(
     "/partidos",
+
     asyncHandler(
       async (req, res) => {
 
         res.json(
           await partidos
-            .crear(req.body)
+            .crear(
+              req.body
+            )
         );
       }
     )
@@ -136,6 +147,7 @@ function crearApiRoutes(
 
   router.put(
     "/partidos/:id",
+
     asyncHandler(
       async (req, res) => {
 
@@ -153,6 +165,7 @@ function crearApiRoutes(
 
   router.delete(
     "/partidos/:id",
+
     asyncHandler(
       async (req, res) => {
 
@@ -173,6 +186,7 @@ function crearApiRoutes(
 
   router.get(
     "/entrenamientos",
+
     asyncHandler(
       async (req, res) => {
 
@@ -187,12 +201,15 @@ function crearApiRoutes(
 
   router.post(
     "/entrenamientos",
+
     asyncHandler(
       async (req, res) => {
 
         res.json(
           await entrenamientos
-            .crear(req.body)
+            .crear(
+              req.body
+            )
         );
       }
     )
@@ -201,6 +218,7 @@ function crearApiRoutes(
 
   router.put(
     "/entrenamientos/:id",
+
     asyncHandler(
       async (req, res) => {
 
@@ -218,6 +236,7 @@ function crearApiRoutes(
 
   router.delete(
     "/entrenamientos/:id",
+
     asyncHandler(
       async (req, res) => {
 
@@ -238,6 +257,7 @@ function crearApiRoutes(
 
   router.get(
     "/asistencia-resumen",
+
     asyncHandler(
       async (req, res) => {
 
@@ -252,6 +272,7 @@ function crearApiRoutes(
 
   router.get(
     "/asistencia/:entrenamientoId",
+
     asyncHandler(
       async (req, res) => {
 
@@ -269,6 +290,7 @@ function crearApiRoutes(
 
   router.post(
     "/asistencia/:entrenamientoId",
+
     asyncHandler(
       async (req, res) => {
 
@@ -293,6 +315,7 @@ function crearApiRoutes(
 
   router.get(
     "/lesiones",
+
     asyncHandler(
       async (req, res) => {
 
@@ -307,12 +330,15 @@ function crearApiRoutes(
 
   router.post(
     "/lesiones",
+
     asyncHandler(
       async (req, res) => {
 
         res.json(
           await lesiones
-            .crear(req.body)
+            .crear(
+              req.body
+            )
         );
       }
     )
@@ -321,6 +347,7 @@ function crearApiRoutes(
 
   router.put(
     "/lesiones/:id",
+
     asyncHandler(
       async (req, res) => {
 
@@ -338,6 +365,7 @@ function crearApiRoutes(
 
   router.delete(
     "/lesiones/:id",
+
     asyncHandler(
       async (req, res) => {
 
@@ -358,6 +386,7 @@ function crearApiRoutes(
 
   router.get(
     "/dashboard",
+
     asyncHandler(
       async (req, res) => {
 
@@ -376,6 +405,7 @@ function crearApiRoutes(
 
   router.get(
     "/estadisticas",
+
     asyncHandler(
       async (req, res) => {
 
@@ -392,8 +422,6 @@ function crearApiRoutes(
 }
 
 
-// Permite manejar errores
-// de funciones async sin repetir try/catch
 function asyncHandler(
   controlador
 ) {
