@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>
+    Asistencia - BasketStats
+  </title>
+
+  <link
+    rel="stylesheet"
+    href="styles.css"
+  >
+
+</head>
+
+<body>
+
+
+<div class="sidebar">
+
+  <div class="logo">
+
+    <div class="logo-icono">
+      🏀
+    </div>
+
+    <div>
+
+      <h2>
+        BasketStats
+      </h2>
+
+      <small>
+        PRO
+      </small>
+
+    </div>
+
+  </div>
+
+
+  <nav>
+
+    <a href="index.html">
+      <span>▣</span>
+      Dashboard
+    </a>
+
+
+    <a href="jugadores.html">
+      <span>👥</span>
+      Jugadores
+    </a>
+
+
+    <a href="partidos.html">
+      <span>🏀</span>
+      Partidos
+    </a>
+
+
+    <a href="entrenamientos.html">
+      <span>🏋️</span>
+      Entrenamientos
+    </a>
+
+
+    <a
+      href="asistencia.html"
+      class="active"
+    >
+      <span>✅</span>
+      Asistencia
+    </a>
+
+
+    <a href="lesiones.html">
+      <span>🩹</span>
+      Lesiones
+    </a>
+
+
+    <a href="estadisticas.html">
+      <span>📊</span>
+      Estadísticas
+    </a>
+
+  </nav>
+
+
+  <div class="sidebar-footer">
+
+    <span>
+      Temporada
+    </span>
+
+    <strong>
+      2026
+    </strong>
+
+  </div>
+
+</div>
+
+
+<main class="contenido">
+
+
+  <div class="pagina-header">
+
+    <div>
+
+      <span class="etiqueta">
+        ATTENDANCE CONTROL
+      </span>
+
+      <h1>
+        Asistencia
+      </h1>
+
+      <p>
+        Controla la asistencia de los
+        jugadores a los entrenamientos.
+      </p>
+
+    </div>
+
+  </div>
+
+
+  <section class="panel">
+
+    <div class="panel-header">
+
+      <div>
+
+        <span class="subtitulo-panel">
+          ENTRENAMIENTO
+        </span>
+
+        <h2>
+          Seleccionar sesión
+        </h2>
+
+      </div>
+
+    </div>
+
+
+    <div class="selector-asistencia">
+
+      <select
+        id="entrenamientoSelect"
+        onchange="cargarAsistencia()"
+      >
+
+        <option value="">
+          Seleccione un entrenamiento
+        </option>
+
+      </select>
+
+    </div>
+
+  </section>
+
+
+  <section
+    id="panelAsistencia"
+    class="panel oculto"
+  >
+
+
+    <div class="panel-header">
+
+      <div>
+
+        <span class="subtitulo-panel">
+          CONTROL
+        </span>
+
+        <h2>
+          Lista de jugadores
+        </h2>
+
+      </div>
+
+
+      <button
+        class="boton-principal"
+        onclick="guardarAsistencia()"
+      >
+        Guardar asistencia
+      </button>
+
+    </div>
+
+
+    <div
+      id="listaAsistencia"
+      class="lista-asistencia"
+    >
+    </div>
+
+
+  </section>
+
+
+  <section class="panel">
+
+
+    <div class="panel-header">
+
+      <div>
+
+        <span class="subtitulo-panel">
+          RESUMEN
+        </span>
+
+        <h2>
+          Asistencia general
+        </h2>
+
+      </div>
+
+    </div>
+
+
+    <div
+      id="resumenAsistencia"
+      class="tabla-contenedor"
+    >
+    </div>
+
+
+  </section>
+
+
+</main>
+
+
+<script src="asistencia.js"></script>
+
+</body>
+
+</html>

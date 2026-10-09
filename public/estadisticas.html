@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>
+    Estadísticas - BasketStats
+  </title>
+
+  <link
+    rel="stylesheet"
+    href="styles.css"
+  >
+
+</head>
+
+<body>
+
+
+<div class="sidebar">
+
+  <div class="logo">
+
+    <div class="logo-icono">
+      🏀
+    </div>
+
+    <div>
+      <h2>BasketStats</h2>
+      <small>PRO</small>
+    </div>
+
+  </div>
+
+
+  <nav>
+
+    <a href="index.html">
+      <span>▣</span>
+      Dashboard
+    </a>
+
+    <a href="jugadores.html">
+      <span>👥</span>
+      Jugadores
+    </a>
+
+    <a href="partidos.html">
+      <span>🏀</span>
+      Partidos
+    </a>
+
+    <a href="entrenamientos.html">
+      <span>🏋️</span>
+      Entrenamientos
+    </a>
+
+    <a href="asistencia.html">
+      <span>✅</span>
+      Asistencia
+    </a>
+
+    <a href="lesiones.html">
+      <span>🩹</span>
+      Lesiones
+    </a>
+
+    <a
+      href="estadisticas.html"
+      class="active"
+    >
+      <span>📊</span>
+      Estadísticas
+    </a>
+
+  </nav>
+
+
+  <div class="sidebar-footer">
+
+    <span>Temporada</span>
+
+    <strong>
+      2026
+    </strong>
+
+  </div>
+
+</div>
+
+
+<main class="contenido">
+
+
+  <div class="pagina-header">
+
+    <div>
+
+      <span class="etiqueta">
+        ANALYTICS
+      </span>
+
+      <h1>
+        Estadísticas
+      </h1>
+
+      <p>
+        Comparación del rendimiento
+        individual de los jugadores.
+      </p>
+
+    </div>
+
+  </div>
+
+
+  <section class="panel">
+
+    <div class="panel-header">
+
+      <div>
+
+        <span class="subtitulo-panel">
+          PUNTOS
+        </span>
+
+        <h2>
+          Rendimiento ofensivo
+        </h2>
+
+      </div>
+
+    </div>
+
+
+    <div
+      id="graficoPuntos"
+      class="grafico-barras"
+    >
+    </div>
+
+  </section>
+
+
+  <section class="dashboard-doble">
+
+
+    <div class="panel">
+
+      <div class="panel-header">
+
+        <div>
+
+          <span class="subtitulo-panel">
+            REBOTES
+          </span>
+
+          <h2>
+            Promedio de rebotes
+          </h2>
+
+        </div>
+
+      </div>
+
+
+      <div
+        id="rankingRebotes"
+        class="ranking-estadisticas"
+      >
+      </div>
+
+    </div>
+
+
+    <div class="panel">
+
+      <div class="panel-header">
+
+        <div>
+
+          <span class="subtitulo-panel">
+            ASISTENCIAS
+          </span>
+
+          <h2>
+            Promedio de asistencias
+          </h2>
+
+        </div>
+
+      </div>
+
+
+      <div
+        id="rankingAsistencias"
+        class="ranking-estadisticas"
+      >
+      </div>
+
+    </div>
+
+
+  </section>
+
+
+</main>
+
+
+<script src="estadisticas.js"></script>
+
+</body>
+
+</html>

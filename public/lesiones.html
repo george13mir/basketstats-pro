@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>
+    Lesiones - BasketStats
+  </title>
+
+  <link
+    rel="stylesheet"
+    href="styles.css"
+  >
+
+</head>
+
+<body>
+
+
+<div class="sidebar">
+
+  <div class="logo">
+
+    <div class="logo-icono">
+      🏀
+    </div>
+
+    <div>
+
+      <h2>
+        BasketStats
+      </h2>
+
+      <small>
+        PRO
+      </small>
+
+    </div>
+
+  </div>
+
+
+  <nav>
+
+    <a href="index.html">
+      <span>▣</span>
+      Dashboard
+    </a>
+
+
+    <a href="jugadores.html">
+      <span>👥</span>
+      Jugadores
+    </a>
+
+
+    <a href="partidos.html">
+      <span>🏀</span>
+      Partidos
+    </a>
+
+
+    <a href="entrenamientos.html">
+      <span>🏋️</span>
+      Entrenamientos
+    </a>
+
+
+    <a href="asistencia.html">
+      <span>✅</span>
+      Asistencia
+    </a>
+
+
+    <a
+      href="lesiones.html"
+      class="active"
+    >
+      <span>🩹</span>
+      Lesiones
+    </a>
+
+
+    <a href="estadisticas.html">
+      <span>📊</span>
+      Estadísticas
+    </a>
+
+  </nav>
+
+
+  <div class="sidebar-footer">
+
+    <span>
+      Temporada
+    </span>
+
+    <strong>
+      2026
+    </strong>
+
+  </div>
+
+</div>
+
+
+<main class="contenido">
+
+
+  <div class="pagina-header">
+
+    <div>
+
+      <span class="etiqueta">
+        MEDICAL REPORT
+      </span>
+
+      <h1>
+        Lesiones
+      </h1>
+
+      <p>
+        Control y seguimiento del
+        estado físico de los jugadores.
+      </p>
+
+    </div>
+
+
+    <button
+      class="boton-principal"
+      onclick="mostrarFormulario()"
+    >
+      + Registrar lesión
+    </button>
+
+  </div>
+
+
+  <section
+    id="formularioLesion"
+    class="panel formulario oculto"
+  >
+
+
+    <div class="panel-header">
+
+      <div>
+
+        <span class="subtitulo-panel">
+          REGISTRO MÉDICO
+        </span>
+
+        <h2 id="tituloLesion">
+          Nueva lesión
+        </h2>
+
+      </div>
+
+    </div>
+
+
+    <input
+      type="hidden"
+      id="lesionId"
+    >
+
+
+    <div class="grid-formulario">
+
+
+      <div class="campo">
+
+        <label>
+          Jugador
+        </label>
+
+        <select id="jugadorId">
+
+          <option value="">
+            Seleccione un jugador
+          </option>
+
+        </select>
+
+      </div>
+
+
+      <div class="campo">
+
+        <label>
+          Tipo de lesión
+        </label>
+
+        <input
+          type="text"
+          id="tipoLesion"
+          placeholder="Ej. Esguince de tobillo"
+        >
+
+      </div>
+
+
+      <div class="campo">
+
+        <label>
+          Fecha de lesión
+        </label>
+
+        <input
+          type="date"
+          id="fechaInicio"
+        >
+
+      </div>
+
+
+      <div class="campo">
+
+        <label>
+          Recuperación estimada
+        </label>
+
+        <input
+          type="date"
+          id="fechaEstimada"
+        >
+
+      </div>
+
+
+      <div class="campo">
+
+        <label>
+          Estado
+        </label>
+
+        <select id="estadoLesion">
+
+          <option value="En recuperación">
+            En recuperación
+          </option>
+
+          <option value="Rehabilitación">
+            Rehabilitación
+          </option>
+
+          <option value="Recuperado">
+            Recuperado
+          </option>
+
+        </select>
+
+      </div>
+
+
+      <div class="campo campo-doble">
+
+        <label>
+          Observaciones
+        </label>
+
+        <input
+          type="text"
+          id="observaciones"
+          placeholder="Diagnóstico, recomendaciones..."
+        >
+
+      </div>
+
+
+    </div>
+
+
+    <div class="acciones-formulario">
+
+      <button
+        class="boton-principal"
+        onclick="guardarLesion()"
+      >
+        Guardar lesión
+      </button>
+
+
+      <button
+        class="boton-secundario"
+        onclick="ocultarFormulario()"
+      >
+        Cancelar
+      </button>
+
+    </div>
+
+
+  </section>
+
+
+  <section class="panel">
+
+
+    <div class="panel-header">
+
+      <div>
+
+        <span class="subtitulo-panel">
+          SEGUIMIENTO
+        </span>
+
+        <h2>
+          Historial de lesiones
+        </h2>
+
+      </div>
+
+    </div>
+
+
+    <div
+      id="listaLesiones"
+      class="lista-lesiones"
+    >
+    </div>
+
+
+  </section>
+
+
+</main>
+
+
+<script src="lesiones.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>BasketStats Pro</title>
+
+  <link
+    rel="stylesheet"
+    href="styles.css"
+  >
+
+</head>
+
+<body>
+
+
+<div class="sidebar">
+
+  <div class="logo">
+
+    <div class="logo-icono">
+      🏀
+    </div>
+
+    <div>
+      <h2>BasketStats</h2>
+      <small>PRO</small>
+    </div>
+
+  </div>
+
+
+  <nav>
+
+    <a
+      href="index.html"
+      class="active"
+    >
+      <span>▣</span>
+      Dashboard
+    </a>
+
+    <a href="jugadores.html">
+      <span>👥</span>
+      Jugadores
+    </a>
+
+    <a href="partidos.html">
+      <span>🏀</span>
+      Partidos
+    </a>
+
+    <a href="entrenamientos.html">
+      <span>🏋️</span>
+      Entrenamientos
+    </a>
+
+    <a href="asistencia.html">
+      <span>✅</span>
+      Asistencia
+    </a>
+
+    <a href="lesiones.html">
+      <span>🩹</span>
+      Lesiones
+    </a>
+
+    <a href="estadisticas.html">
+      <span>📊</span>
+      Estadísticas
+    </a>
+
+  </nav>
+
+
+  <div class="sidebar-footer">
+
+    <span>Temporada</span>
+
+    <strong>2026</strong>
+
+  </div>
+
+</div>
+
+
+<main class="contenido">
+
+
+  <section class="hero-dashboard">
+
+    <div>
+
+      <span class="etiqueta">
+        BASKETBALL PERFORMANCE
+      </span>
+
+      <h1>
+        BasketStats Pro
+      </h1>
+
+      <p>
+        Gestión y análisis del rendimiento
+        deportivo de tu equipo.
+      </p>
+
+    </div>
+
+
+    <a
+      href="jugadores.html"
+      class="boton-hero"
+    >
+      + Registrar jugador
+    </a>
+
+  </section>
+
+
+  <section class="tarjetas dashboard-grid">
+
+    <div class="tarjeta">
+
+      <div class="card-top">
+
+        <span class="card-icono">
+          👥
+        </span>
+
+        <span class="mini-label">
+          PLANTEL
+        </span>
+
+      </div>
+
+      <h2 id="totalJugadores">
+        0
+      </h2>
+
+      <p>
+        Jugadores registrados
+      </p>
+
+    </div>
+
+
+    <div class="tarjeta">
+
+      <div class="card-top">
+
+        <span class="card-icono">
+          🏀
+        </span>
+
+        <span class="mini-label">
+          PARTIDOS
+        </span>
+
+      </div>
+
+      <h2 id="totalPartidos">
+        0
+      </h2>
+
+      <p>
+        Partidos registrados
+      </p>
+
+    </div>
+
+
+    <div class="tarjeta">
+
+      <div class="card-top">
+
+        <span class="card-icono">
+          🏆
+        </span>
+
+        <span class="mini-label">
+          VICTORIAS
+        </span>
+
+      </div>
+
+      <h2 id="victorias">
+        0
+      </h2>
+
+      <p>
+        Partidos ganados
+      </p>
+
+    </div>
+
+
+    <div class="tarjeta">
+
+      <div class="card-top">
+
+        <span class="card-icono">
+          📈
+        </span>
+
+        <span class="mini-label">
+          EFECTIVIDAD
+        </span>
+
+      </div>
+
+      <h2>
+        <span id="porcentajeVictorias">
+          0
+        </span>%
+      </h2>
+
+      <p>
+        Porcentaje de victorias
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <section class="dashboard-doble">
+
+
+    <div class="panel">
+
+      <div class="panel-header">
+
+        <div>
+
+          <span class="subtitulo-panel">
+            RENDIMIENTO
+          </span>
+
+          <h2>
+            🏆 Líderes del equipo
+          </h2>
+
+        </div>
+
+      </div>
+
+
+      <div class="lideres-grid">
+
+
+        <div class="lider-card">
+
+          <div class="lider-icono">
+            🔥
+          </div>
+
+          <span>
+            Mejor anotador
+          </span>
+
+          <h3 id="liderPuntos">
+            Sin datos
+          </h3>
+
+          <strong id="liderPuntosValor">
+            0.0 PTS/PJ
+          </strong>
+
+        </div>
+
+
+        <div class="lider-card">
+
+          <div class="lider-icono">
+            💪
+          </div>
+
+          <span>
+            Mejor reboteador
+          </span>
+
+          <h3 id="liderRebotes">
+            Sin datos
+          </h3>
+
+          <strong id="liderRebotesValor">
+            0.0 REB/PJ
+          </strong>
+
+        </div>
+
+
+        <div class="lider-card">
+
+          <div class="lider-icono">
+            🎯
+          </div>
+
+          <span>
+            Mejor asistidor
+          </span>
+
+          <h3 id="liderAsistencias">
+            Sin datos
+          </h3>
+
+          <strong id="liderAsistenciasValor">
+            0.0 AST/PJ
+          </strong>
+
+        </div>
+
+
+      </div>
+
+    </div>
+
+
+    <div class="panel">
+
+      <div class="panel-header">
+
+        <div>
+
+          <span class="subtitulo-panel">
+            DISPONIBILIDAD
+          </span>
+
+          <h2>
+            Estado del plantel
+          </h2>
+
+        </div>
+
+      </div>
+
+
+      <div class="estado-plantel">
+
+        <div>
+
+          <span>
+            Activos
+          </span>
+
+          <strong id="jugadoresActivos">
+            0
+          </strong>
+
+        </div>
+
+
+        <div>
+
+          <span>
+            Lesionados
+          </span>
+
+          <strong id="jugadoresLesionados">
+            0
+          </strong>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+  </section>
+
+
+  <section class="dashboard-doble">
+
+
+    <div class="panel">
+
+      <div class="panel-header">
+
+        <div>
+
+          <span class="subtitulo-panel">
+            RANKING
+          </span>
+
+          <h2>
+            Top 3 jugadores
+          </h2>
+
+        </div>
+
+      </div>
+
+
+      <div
+        id="topJugadores"
+        class="top-jugadores"
+      >
+      </div>
+
+    </div>
+
+
+    <div class="panel">
+
+      <div class="panel-header">
+
+        <div>
+
+          <span class="subtitulo-panel">
+            RESULTADOS
+          </span>
+
+          <h2>
+            Últimos partidos
+          </h2>
+
+        </div>
+
+
+        <a
+          href="partidos.html"
+          class="link-panel"
+        >
+          Ver todos
+        </a>
+
+      </div>
+
+
+      <div
+        id="ultimosPartidos"
+        class="ultimos-partidos"
+      >
+      </div>
+
+    </div>
+
+
+  </section>
+
+
+</main>
+
+
+<script src="app.js"></script>
+
+</body>
+</html>

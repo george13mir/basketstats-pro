@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>
+    Partidos - BasketStats
+  </title>
+
+  <link
+    rel="stylesheet"
+    href="styles.css"
+  >
+
+</head>
+
+<body>
+
+
+<div class="sidebar">
+
+  <div class="logo">
+
+    <div class="logo-icono">
+      🏀
+    </div>
+
+    <div>
+      <h2>BasketStats</h2>
+      <small>PRO</small>
+    </div>
+
+  </div>
+
+
+  <nav>
+
+    <a href="index.html">
+      <span>▣</span>
+      Dashboard
+    </a>
+
+    <a href="jugadores.html">
+      <span>👥</span>
+      Jugadores
+    </a>
+
+    <a
+      href="partidos.html"
+      class="active"
+    >
+      <span>🏀</span>
+      Partidos
+    </a>
+
+    <a href="entrenamientos.html">
+      <span>🏋️</span>
+      Entrenamientos
+    </a>
+
+    <a href="asistencia.html">
+      <span>✅</span>
+      Asistencia
+    </a>
+
+    <a href="lesiones.html">
+      <span>🩹</span>
+      Lesiones
+    </a>
+
+    <a href="estadisticas.html">
+      <span>📊</span>
+      Estadísticas
+    </a>
+
+  </nav>
+
+
+  <div class="sidebar-footer">
+
+    <span>Temporada</span>
+
+    <strong>
+      2026
+    </strong>
+
+  </div>
+
+</div>
+
+
+<main class="contenido">
+
+
+  <div class="pagina-header">
+
+    <div>
+
+      <span class="etiqueta">
+        GAME CENTER
+      </span>
+
+      <h1>
+        Partidos
+      </h1>
+
+      <p>
+        Registra y consulta los resultados
+        del equipo.
+      </p>
+
+    </div>
+
+
+    <button
+      class="boton-principal"
+      onclick="mostrarFormulario()"
+    >
+      + Registrar partido
+    </button>
+
+  </div>
+
+
+  <section
+    id="formularioPartido"
+    class="panel formulario oculto"
+  >
+
+    <div class="panel-header">
+
+      <div>
+
+        <span class="subtitulo-panel">
+          PARTIDO
+        </span>
+
+        <h2 id="tituloPartido">
+          Registrar partido
+        </h2>
+
+      </div>
+
+    </div>
+
+
+    <input
+      type="hidden"
+      id="partidoId"
+    >
+
+
+    <div class="grid-formulario">
+
+
+      <div class="campo">
+
+        <label>Rival</label>
+
+        <input
+          type="text"
+          id="rival"
+          placeholder="Ej. Tigers"
+        >
+
+      </div>
+
+
+      <div class="campo">
+
+        <label>Fecha</label>
+
+        <input
+          type="date"
+          id="fecha"
+        >
+
+      </div>
+
+
+      <div class="campo">
+
+        <label>Lugar</label>
+
+        <input
+          type="text"
+          id="lugar"
+          placeholder="Ej. Coliseo Central"
+        >
+
+      </div>
+
+
+      <div class="campo">
+
+        <label>
+          Puntos BasketStats
+        </label>
+
+        <input
+          type="number"
+          id="puntosEquipo"
+          placeholder="0"
+        >
+
+      </div>
+
+
+      <div class="campo">
+
+        <label>
+          Puntos rival
+        </label>
+
+        <input
+          type="number"
+          id="puntosRival"
+          placeholder="0"
+        >
+
+      </div>
+
+
+      <div class="campo campo-doble">
+
+        <label>
+          Observaciones
+        </label>
+
+        <input
+          type="text"
+          id="observaciones"
+          placeholder="Opcional"
+        >
+
+      </div>
+
+
+    </div>
+
+
+    <div class="acciones-formulario">
+
+      <button
+        class="boton-principal"
+        onclick="guardarPartido()"
+      >
+        Guardar partido
+      </button>
+
+      <button
+        class="boton-secundario"
+        onclick="ocultarFormulario()"
+      >
+        Cancelar
+      </button>
+
+    </div>
+
+  </section>
+
+
+  <section class="panel">
+
+    <div class="panel-header">
+
+      <div>
+
+        <span class="subtitulo-panel">
+          HISTORIAL
+        </span>
+
+        <h2>
+          Resultados
+        </h2>
+
+      </div>
+
+    </div>
+
+
+    <div
+      id="listaPartidos"
+      class="lista-partidos"
+    >
+    </div>
+
+  </section>
+
+
+</main>
+
+
+<script src="partidos.js"></script>
+
+</body>
+
+</html>
